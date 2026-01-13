@@ -7,6 +7,7 @@ import {
    RouteLocation,
    RouterView
 } from 'vue-router/dist/vue-router.mjs';
+import eventRoutes from './routes/event-routes';
 
 const router = createRouter({
    history: createWebHistory(),
@@ -23,11 +24,13 @@ const router = createRouter({
                      meta: {
                         layout: 'main-layout'
                      },
+                     redirect: { name: 'events' },
                      components: {
                         default: RouterView,
                         'layout-topbar': () => import('@/layouts/main-layout/Topbar.vue'),
                         'layout-footer': () => import('@/layouts/main-layout/Footer.vue')
-                     }
+                     },
+                     children: [...eventRoutes]
                   },
                   {
                      path: '',
