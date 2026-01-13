@@ -13,6 +13,7 @@
 </template>
 <style lang="scss">
 .layout-footer {
-   @apply flex items-center justify-center self-end w-full gap-2 p-1 bg-[var(--surface-overlay)];
+   @apply bg-[var(--surface-overlay)];
+   @apply flex items-center justify-center self-end w-full gap-2 p-2 px-8;
 }
 </style>

@@ -4,9 +4,6 @@
 
 <style>
 #app {
-   display: flex;
-   height: 100vh;
-   width: 100vw;
-   overflow: hidden;
+   @apply min-w-[100dvw] min-h-[100dvh] overflow-hidden flex items-start;
 }
 </style>

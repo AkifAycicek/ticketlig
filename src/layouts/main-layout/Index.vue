@@ -4,24 +4,24 @@ useLayout();
 
 <template>
    <div class="layout-wrapper">
-      <RouterView v-slot="{ Component }" name="layout-topbar">
-         <Transition
-            appear
-            enter-active-class="animate-fadeinup animate-fill-forwards animate-ease-out animate-duration-[var(--transition-duration)]"
-            leave-active-class="animate-fadeoutup animate-fill-forwards animate-ease-in animate-duration-[var(--transition-duration)]"
-            mode="out-in"
-         >
-            <template v-if="Component">
-               <Suspense>
-                  <component :is="Component" />
-               </Suspense>
-            </template>
-         </Transition>
-      </RouterView>
       <main class="layout-main">
-         <div class="max-w-[996px] flex justify-between mx-auto">
+         <RouterView v-slot="{ Component }" name="layout-topbar">
+            <Transition
+               appear
+               enter-active-class="animate-fadeinup animate-fill-forwards animate-ease-out animate-duration-[var(--transition-duration)]"
+               leave-active-class="animate-fadeoutup animate-fill-forwards animate-ease-in animate-duration-[var(--transition-duration)]"
+               mode="out-in"
+            >
+               <template v-if="Component">
+                  <Suspense>
+                     <component :is="Component" />
+                  </Suspense>
+               </template>
+            </Transition>
+         </RouterView>
+         <div class="max-w-[996px] flex-1 w-full flex flex-col mx-auto p-2 px-8">
             <RouterView v-slot="{ Component }" name="page-header">
-               <div v-if="Component" class="p-4 mb-4 flex justify-center lg:justify-between gap-2">
+               <div v-if="Component" class="p-4 mb-4 flex gap-2">
                   <Suspense>
                      <component :is="Component" />
                   </Suspense>
@@ -58,10 +58,10 @@ useLayout();
 
 <style lang="scss">
 .layout-wrapper {
-   @apply w-full flex-1 flex flex-col gap-4;
+   @apply min-w-[inherit] min-h-[inherit] overflow-auto flex flex-col gap-4;
 }
 
 .layout-main {
-   @apply w-full flex-1 overflow-auto relative self-start;
+   @apply flex-1 flex flex-col;
 }
 </style>
