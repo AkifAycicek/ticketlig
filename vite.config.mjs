@@ -57,6 +57,10 @@ export default defineConfig({
                imports: ['locale', 'loadLocaleMessages', 'SUPPORTED_LOCALES', ['default', 'i18n']]
             },
             {
+               from: '@composables/useLayout',
+               imports: [['default', 'useLayout']]
+            },
+            {
                from: 'lodash',
                imports: lodash
                   .toPairs(lodash)
