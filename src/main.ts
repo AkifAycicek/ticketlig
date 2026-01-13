@@ -3,6 +3,7 @@ import App from './App.vue';
 import { i18NPlugin } from '@/plugins/i18n';
 import Aura from '@primeuix/themes/aura';
 import PrimeVue from 'primevue/config';
+import ToastService from 'primevue/toastservice';
 
 import '@/assets/style/styles.scss';
 import '@/assets/style/tailwind.css';
@@ -28,6 +29,8 @@ app.use(PrimeVue, {
       }
    }
 });
+
+app.use(ToastService);
 app.directive('keyfilter', KeyFilter);
 app.directive('focustrap', FocusTrap);
 app.directive('ripple', Ripple);
