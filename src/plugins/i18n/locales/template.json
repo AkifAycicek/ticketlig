@@ -1,0 +1,54 @@
+{
+  "fields": {
+    "": ""
+  },
+  "action": {
+    "reset": "",
+    "save": ""
+  },
+  "app_config": {
+    "language": {
+      "option": {
+        "turkish": "",
+        "english": ""
+      }
+    }
+  },
+  "route": {
+    "label": {
+      "error": "",
+      "notfound": "",
+      "events": ""
+    }
+  },
+  "router": {
+    "error_occured": "",
+    "requested_resource_is_not_available": "",
+    "action": {
+      "go_back": "",
+      "go_to_home": ""
+    },
+    "not_found": ""
+  },
+  "layout": {
+    "header": {
+      "toplinks": {
+        "gift_card": "",
+        "monthly_magazine": "",
+        "blog": "",
+        "help": ""
+      },
+      "navlinks": {
+        "football": "",
+        "music": "",
+        "scene": "",
+        "sport": "",
+        "family": "",
+        "education": ""
+      },
+      "search_activity_venue_or_actors": {
+        "placeholder": ""
+      }
+    }
+  }
+}

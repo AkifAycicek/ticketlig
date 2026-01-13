@@ -3,38 +3,38 @@ import { MenuProps } from 'primevue';
 
 const topLinks: ComputedRef<MenuProps['model']> = computed(() => [
    {
-      label: i18n.t('header.toplinks.gift_card'),
+      label: i18n.t('layout.header.toplinks.gift_card'),
       icon: PrimeIcons.GIFT
    },
    {
-      label: i18n.t('header.toplinks.monthly_magazine')
+      label: i18n.t('layout.header.toplinks.monthly_magazine')
    },
    {
-      label: i18n.t('header.toplinks.blog')
+      label: i18n.t('layout.header.toplinks.blog')
    },
    {
-      label: i18n.t('header.toplinks.help')
+      label: i18n.t('layout.header.toplinks.help')
    }
 ]);
 
 const navLinks: ComputedRef<MenuProps['model']> = computed(() => [
    {
-      label: i18n.t('header.navlinks.football')
+      label: i18n.t('layout.header.navlinks.football')
    },
    {
-      label: i18n.t('header.navlinks.music')
+      label: i18n.t('layout.header.navlinks.music')
    },
    {
-      label: i18n.t('header.navlinks.scene')
+      label: i18n.t('layout.header.navlinks.scene')
    },
    {
-      label: i18n.t('header.navlinks.sport')
+      label: i18n.t('layout.header.navlinks.sport')
    },
    {
-      label: i18n.t('header.navlinks.family')
+      label: i18n.t('layout.header.navlinks.family')
    },
    {
-      label: i18n.t('header.navlinks.education')
+      label: i18n.t('layout.header.navlinks.education')
    }
 ]);
 </script>
@@ -83,7 +83,9 @@ const navLinks: ComputedRef<MenuProps['model']> = computed(() => [
                </li>
             </ul>
             <FormField class="ms-auto">
-               <InputText :placeholder="$t('header.search.placeholder')" />
+               <InputText
+                  :placeholder="$t('layout.header.search_activity_venue_or_actors.placeholder')"
+               />
             </FormField>
          </div>
       </div>
