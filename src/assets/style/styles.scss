@@ -1,0 +1,7 @@
+@use 'sass:meta';
+@import 'base/';
+
+@import 'primeicons/primeicons.css';
+
+@include meta.load-css('layout');
+@include meta.load-css('components');

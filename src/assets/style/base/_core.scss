@@ -1,0 +1,29 @@
+:root {
+   height: 100%;
+   font-size: clamp(calc(0.625rem * var(--ui-scale)), 2vw, calc(1rem * var(--ui-scale)));
+}
+
+body {
+   @apply font-['Averta',Arial,Helvetica,sans-serif] text-[var(--text-color)] bg-[var(--surface-ground)] min-h-screen overflow-x-hidden antialiased;
+
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+   scroll-behavior: smooth;
+
+   &::-webkit-scrollbar-track,
+   &::-webkit-scrollbar-track-piece,
+   &::-webkit-scrollbar-corner {
+      @apply bg-transparent rounded-lg;
+   }
+
+   &::-webkit-scrollbar {
+      @apply w-[0.5rem] h-[0.5rem] bg-transparent rounded-lg;
+   }
+
+   &::-webkit-scrollbar-thumb {
+      @apply bg-transparent rounded-lg bg-[var(--text-color-secondary)];
+   }
+}
