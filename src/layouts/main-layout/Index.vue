@@ -1,5 +1,32 @@
 <script lang="ts" setup>
 useLayout();
+
+const route = useRoute();
+
+watch(
+   () => route.hash,
+   async (hash) => {
+      try {
+         if (_isEmpty(hash)) return;
+         setTimeout(() => document.querySelector(route.hash)?.scrollIntoView(), 1000);
+      } catch (error) {
+         console.warn(error);
+      }
+   },
+   { immediate: true, once: true }
+);
+
+watch(
+   () => route.hash,
+   (hash) => {
+      try {
+         if (_isEmpty(hash)) return;
+         setTimeout(() => document.querySelector(route.hash)?.scrollIntoView(), 200);
+      } catch (error) {
+         console.warn(error);
+      }
+   }
+);
 </script>
 
 <template>
