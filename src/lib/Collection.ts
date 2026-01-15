@@ -106,7 +106,11 @@ export default class Collection<T = unknown> implements ICollection<T> {
                const prop = Reflect.get(target, key, receiver);
                return unref(prop);
             }
-            return _get((target._state as Ref<T>).value, key, null);
+            return _get(
+               (target._state as Ref<T>).value,
+               key,
+               Reflect.get(target._state as Ref<T>, key, receiver)
+            );
          },
          /**
           * Set a property on the target or its state.
