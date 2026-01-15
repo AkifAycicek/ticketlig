@@ -76,27 +76,7 @@ beforeEachMiddlewares.forEach((middleware) => {
 });
 
 router.onError(async (error: any, to: RouteLocation) => {
-   const status = error?.status;
-
-   switch (status) {
-      case 401: {
-         await router.replace({ name: 'auth-login' });
-         break;
-      }
-
-      case 403: {
-         await appErrorHandler(error);
-         to.name = 'access-denied';
-         await router.push(to);
-         break;
-      }
-
-      default: {
-         await appErrorHandler(error);
-         router.push({ name: 'error' });
-         break;
-      }
-   }
+   await appErrorHandler(error);
 });
 
 export default router;

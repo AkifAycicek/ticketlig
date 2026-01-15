@@ -1,8 +1,6 @@
 import { app } from '@/main';
 
 export const appErrorHandler = async (error: any) => {
-   if (!error.status && !error.code) return;
-
    console.error(error);
 
    await nextTick(async () => {
