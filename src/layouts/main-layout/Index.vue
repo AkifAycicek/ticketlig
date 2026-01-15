@@ -19,7 +19,7 @@ useLayout();
                </template>
             </Transition>
          </RouterView>
-         <div class="max-w-[996px] flex-1 w-full flex flex-col mx-auto p-2 px-8">
+         <div class="max-w-[996px] flex-1 w-full flex flex-col mx-auto p-8">
             <RouterView v-slot="{ Component }" name="page-header">
                <div v-if="Component" class="p-4 mb-4 flex gap-2">
                   <Suspense>
@@ -28,7 +28,7 @@ useLayout();
                </div>
             </RouterView>
 
-            <RouterView />
+            <RouteLoader />
 
             <RouterView v-slot="{ Component }" name="page-footer">
                <div v-if="Component" class="p-4">
