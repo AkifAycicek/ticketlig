@@ -1,7 +1,7 @@
 import { beforeEachMiddlewares } from './middlewares';
 
 import RouteLoader from '@/components/layout/RouteLoader.vue';
-import { appErrorHandler } from '@/lib/appErrorHandler';
+import { appErrorHandler } from '@/lib/app-error-handler';
 import { createRouter, createWebHistory, RouteLocation } from 'vue-router/dist/vue-router.mjs';
 import eventRoutes from './routes/event-routes';
 

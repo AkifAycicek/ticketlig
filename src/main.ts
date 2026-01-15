@@ -6,7 +6,7 @@ import { createVueApp } from './app';
 
 import '@/assets/style/styles.scss';
 import '@/assets/style/tailwind.css';
-import { appErrorHandler } from '@lib/appErrorHandler';
+import { appErrorHandler } from '@/lib/app-error-handler';
 import FocusTrap from 'primevue/focustrap';
 import KeyFilter from 'primevue/keyfilter';
 import Ripple from 'primevue/ripple';
