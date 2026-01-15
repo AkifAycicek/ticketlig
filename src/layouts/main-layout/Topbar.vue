@@ -133,7 +133,7 @@ const navLinksMenu = ref();
                   class="w-full"
                   :placeholder="$t('layout.header.search_activity_venue_or_actors.placeholder')"
                />
-               <InputGroupAddon><i :class="PrimeIcons.SEARCH" /></InputGroupAddon>
+               <InputGroupAddon><Button :icon="PrimeIcons.SEARCH" /></InputGroupAddon>
             </InputGroup>
          </div>
       </div>
