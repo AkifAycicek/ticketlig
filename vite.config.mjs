@@ -4,7 +4,6 @@ import lodash from 'lodash';
 import * as path from 'node:path';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-import VueRouter from 'unplugin-vue-router/vite';
 import viteCompression from 'vite-plugin-compression';
 import packageVersion from 'vite-plugin-package-version';
 
@@ -37,7 +36,6 @@ export default defineConfig({
       viteCompression({ algorithm: 'brotliCompress', ext: '.br' }),
       viteCompression({ algorithm: 'gzip', ext: '.gz' }),
       packageVersion(),
-      VueRouter(),
       vue(),
       Components({ resolvers: [PrimeVueResolver()] }),
       AutoImport({
