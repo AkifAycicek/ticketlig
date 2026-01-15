@@ -23,6 +23,7 @@ const router = createRouter({
                      redirect: { name: 'events' },
                      components: {
                         default: RouteLoader,
+                        'page-header': () => import('@components/layout/AppBreadcrumb.vue'),
                         'layout-topbar': () => import('@/layouts/main-layout/Topbar.vue'),
                         'layout-footer': () => import('@/layouts/main-layout/Footer.vue')
                      },

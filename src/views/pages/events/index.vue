@@ -11,15 +11,26 @@ const events = BaseResponse.create<Event[]>()._merge(response)._map(EventModel);
       <h1 class="text-5xl" v-text="$t($route.meta.label as string)" />
 
       <div class="flex gap-4 flex-wrap">
-         <Card class="w-1/2 lg:w-1/4 overflow-hidden" v-for="event in _values(events)">
-            <template #header>
-               <img alt="user header" :src="event.image_url" />
-            </template>
-            <template #title><span v-text="event.title" /></template>
-            <template #content>
-               <p class="m-0" v-text="event.venue.name" />
-            </template>
-         </Card>
+         <RouterLink
+            custom
+            v-for="(event, key) in _values(events)"
+            :key="event.id"
+            :to="{ name: 'event-detail', params: { id: event.id } }"
+            v-slot="{ href, navigate }"
+         >
+            <a :href @click.prevent="() => navigate()" class="w-1/2 lg:w-1/4">
+               <Card class="overflow-hidden">
+                  <template #header>
+                     <img alt="user header" :src="event.image_url" />
+                  </template>
+                  <template #title><span v-text="event.title" /></template>
+                  <template #subtitle><span v-text="event.event_date" /></template>
+                  <template #content>
+                     <p class="m-0" v-text="event.venue.name" />
+                  </template>
+               </Card>
+            </a>
+         </RouterLink>
       </div>
    </div>
 </template>

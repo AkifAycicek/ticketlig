@@ -3,6 +3,13 @@ import { BaseModel } from './BaseModel';
 export interface EventVenue {
    id: number;
    name: string;
+   address: string;
+}
+
+export interface EventCategory {
+   id: string;
+   name: string;
+   price: number;
 }
 
 export interface Event {
@@ -12,6 +19,7 @@ export interface Event {
    image_url: string;
    event_date: string;
    venue: EventVenue;
+   event_categories: EventCategory[];
 }
 
 type Constructor<T> = {
