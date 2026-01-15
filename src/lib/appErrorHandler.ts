@@ -1,4 +1,4 @@
-import { app } from '@/main';
+import { app } from '@/app';
 
 export const appErrorHandler = async (error: any) => {
    console.error(error);

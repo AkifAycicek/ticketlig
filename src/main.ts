@@ -1,9 +1,8 @@
-import App from './App.vue';
-
 import { i18NPlugin } from '@/plugins/i18n';
 import Aura from '@primeuix/themes/aura';
 import PrimeVue from 'primevue/config';
 import ToastService from 'primevue/toastservice';
+import { createVueApp } from './app';
 
 import '@/assets/style/styles.scss';
 import '@/assets/style/tailwind.css';
@@ -14,27 +13,34 @@ import Ripple from 'primevue/ripple';
 import Tooltip from 'primevue/tooltip';
 import router from './router';
 
-export const app = createApp(App);
+const g = globalThis as any;
 
-app.config.errorHandler = appErrorHandler;
+if (!g.__VUE_APP__) {
+   const app = createVueApp();
+   g.__VUE_APP__ = app;
 
-app.use(i18NPlugin);
-app.use(PrimeVue, {
-   ripple: true,
-   theme: {
-      preset: Aura,
-      options: {
-         darkModeSelector: '.dark',
-         order: 'tailwind-base, primevue, tailwind-utilities'
+   app.config.errorHandler = appErrorHandler;
+
+   app.use(router);
+   app.use(i18NPlugin);
+   app.use(PrimeVue, {
+      ripple: true,
+      theme: {
+         preset: Aura,
+         options: {
+            darkModeSelector: '.dark',
+            order: 'tailwind-base, primevue, tailwind-utilities'
+         }
       }
-   }
-});
+   });
 
-app.use(ToastService);
-app.directive('keyfilter', KeyFilter);
-app.directive('focustrap', FocusTrap);
-app.directive('ripple', Ripple);
-app.directive('tooltip', Tooltip);
-app.use(router);
+   app.use(ToastService);
+   app.directive('keyfilter', KeyFilter);
+   app.directive('focustrap', FocusTrap);
+   app.directive('ripple', Ripple);
+   app.directive('tooltip', Tooltip);
 
-app.mount('#app');
+   router.isReady().then(() => {
+      app.mount('#app');
+   });
+}
