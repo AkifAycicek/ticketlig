@@ -1,12 +1,8 @@
 import { beforeEachMiddlewares } from './middlewares';
 
+import RouteLoader from '@/components/layout/RouteLoader.vue';
 import { appErrorHandler } from '@/lib/appErrorHandler';
-import {
-   createRouter,
-   createWebHistory,
-   RouteLocation,
-   RouterView
-} from 'vue-router/dist/vue-router.mjs';
+import { createRouter, createWebHistory, RouteLocation } from 'vue-router/dist/vue-router.mjs';
 import eventRoutes from './routes/event-routes';
 
 const router = createRouter({
@@ -26,7 +22,7 @@ const router = createRouter({
                      },
                      redirect: { name: 'events' },
                      components: {
-                        default: RouterView,
+                        default: RouteLoader,
                         'layout-topbar': () => import('@/layouts/main-layout/Topbar.vue'),
                         'layout-footer': () => import('@/layouts/main-layout/Footer.vue')
                      },
