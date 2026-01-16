@@ -7,7 +7,7 @@ export interface EventVenue {
 }
 
 export interface EventCategory {
-   id: string;
+   id: number;
    name: string;
    price: number;
 }
