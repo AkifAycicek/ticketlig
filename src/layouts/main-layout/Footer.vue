@@ -1,15 +1,17 @@
 <script setup></script>
 
 <template>
-   Tickets by
-   <a
-      href="https://akifaycicek.com.tr"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="text-primary font-bold hover:underline"
-   >
-      AkifAycicek
-   </a>
+   <footer class="layout-footer">
+      Tickets by
+      <a
+         href="https://akifaycicek.com.tr"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="text-primary font-bold hover:underline"
+      >
+         AkifAycicek
+      </a>
+   </footer>
 </template>
 <style lang="scss">
 .layout-footer {

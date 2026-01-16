@@ -30,25 +30,18 @@ watch(
 </script>
 
 <template>
-   <div class="layout-wrapper">
-      <main class="layout-main">
+   <div class="layout__wrapper">
+      <main class="layout__main">
          <RouterView v-slot="{ Component }" name="layout-topbar">
-            <Transition
-               appear
-               enter-active-class="animate-fadeinup animate-fill-forwards animate-ease-out animate-duration-[var(--transition-duration)]"
-               leave-active-class="animate-fadeoutup animate-fill-forwards animate-ease-in animate-duration-[var(--transition-duration)]"
-               mode="out-in"
-            >
-               <template v-if="Component">
-                  <Suspense>
-                     <component :is="Component" />
-                  </Suspense>
-               </template>
-            </Transition>
+            <template v-if="Component">
+               <Suspense>
+                  <component :is="Component" />
+               </Suspense>
+            </template>
          </RouterView>
-         <div class="max-w-[996px] flex-1 w-full flex flex-col mx-auto p-8">
-            <RouterView v-slot="{ Component }" name="page-header">
-               <div v-if="Component" class="p-4 mb-4 flex gap-2">
+         <div class="content__body">
+            <RouterView v-slot="{ Component }" name="content-header">
+               <div v-if="Component" class="content__header">
                   <Suspense>
                      <component :is="Component" />
                   </Suspense>
@@ -57,8 +50,8 @@ watch(
 
             <RouteLoader />
 
-            <RouterView v-slot="{ Component }" name="page-footer">
-               <div v-if="Component" class="p-4">
+            <RouterView v-slot="{ Component }" name="content-footer">
+               <div v-if="Component" class="content__footer">
                   <Suspense>
                      <component :is="Component" />
                   </Suspense>
@@ -67,28 +60,37 @@ watch(
          </div>
       </main>
       <RouterView v-slot="{ Component }" name="layout-footer">
-         <Transition
-            appear
-            enter-active-class="animate-fadeindown animate-fill-forwards animate-ease-out animate-duration-[var(--transition-duration)]"
-            leave-active-class="animate-fadeoutdown animate-fill-forwards animate-ease-in animate-duration-[var(--transition-duration)]"
-            mode="out-in"
-         >
-            <footer v-if="Component" class="layout-footer">
-               <Suspense>
-                  <component :is="Component" />
-               </Suspense>
-            </footer>
-         </Transition>
+         <template v-if="Component">
+            <Suspense>
+               <component :is="Component" />
+            </Suspense>
+         </template>
       </RouterView>
    </div>
 </template>
 
 <style lang="scss">
-.layout-wrapper {
-   @apply min-w-[inherit] min-h-[inherit] overflow-auto flex flex-col gap-4;
+.layout {
+   &__wrapper {
+      @apply min-w-[inherit] min-h-[inherit] overflow-auto flex flex-col gap-4;
+   }
+
+   &__main {
+      @apply flex-1 flex flex-col;
+   }
 }
 
-.layout-main {
-   @apply flex-1 flex flex-col;
+.content {
+   &__body {
+      @apply max-w-[996px] flex-1 w-full flex flex-col mx-auto p-8;
+   }
+
+   &__header {
+      @apply p-4 mb-4 flex gap-2;
+   }
+
+   &__footer {
+      @apply p-4;
+   }
 }
 </style>
