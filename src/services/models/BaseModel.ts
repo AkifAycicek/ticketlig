@@ -25,7 +25,7 @@ export class BaseModel<T = unknown> extends Collection<T> {
 
             if (!value) return value;
 
-            if (_isString(value) && isValidDate({ value })) {
+            if (isValidDate({ value })) {
                if (target._dateProperties.get(key)) {
                   return localeDateString({ value: value, validate: false });
                }
