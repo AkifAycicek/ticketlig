@@ -1,9 +1,17 @@
-import { PropertyName, PropertyPath } from 'lodash';
+import { PropertyPath } from 'lodash';
 import { Ref } from 'vue';
 
 type Constructor<T> = {
    new <M = T>(...args: ConstructorParameters<typeof Collection<M>>): Collection<M>;
 };
+
+type Primitive = string | number | boolean | bigint | symbol | null | undefined;
+
+export type Path<T> = T extends Primitive
+   ? never
+   : {
+        [K in keyof T & string]: T[K] extends Primitive ? K : K | `${K}.${Path<T[K]>}`;
+     }[keyof T & string];
 
 // Define the interface for Collection
 export interface ICollection<T = unknown> {
@@ -27,7 +35,7 @@ export interface ICollection<T = unknown> {
     * @param value - Default value if the key is not found.
     * @returns {T[keyof T]} - The value associated with the key, or the default value if the key is not found.
     */
-   _get?(key: keyof T, value?: unknown): T[keyof T];
+   _get?(key: Path<T>, value?: unknown): T[keyof T];
 
    /**
     * Sets a value in the state by key, or replaces the entire state.
@@ -35,7 +43,7 @@ export interface ICollection<T = unknown> {
     * @param value - Value to set for the property (if key is not an object/array).
     * @returns {Collection<T>} - The updated instance of Collection.
     */
-   _set?(key: keyof T | Partial<T> | T, value?: unknown): this;
+   _set(key: Path<T>, value?: unknown): this;
 
    /**
     * Merges new values into the collection.
@@ -104,13 +112,9 @@ export default class Collection<T = unknown> implements ICollection<T> {
          ): Partial<Collection<T> | T> {
             if (Reflect.has(target, key)) {
                const prop = Reflect.get(target, key, receiver);
-               return unref(prop);
+               return isRef(prop) ? unref(prop) : prop;
             }
-            return _get(
-               (target._state as Ref<T>).value,
-               key,
-               Reflect.get(target._state as Ref<T>, key, receiver)
-            );
+            return _get((target._state as Ref<T>).value, key);
          },
          /**
           * Set a property on the target or its state.
@@ -121,7 +125,7 @@ export default class Collection<T = unknown> implements ICollection<T> {
           */
          set(
             target: Collection<T>,
-            key: string,
+            key: Path<T>,
             value: unknown,
             receiver: ProxyHandler<T & object>
          ): boolean {
@@ -175,8 +179,8 @@ export default class Collection<T = unknown> implements ICollection<T> {
     * @param value - Default value if the key is not found.
     * @returns {T[keyof T]} - The value associated with the key, or the default value if the key is not found.
     */
-   _get(key: keyof T | PropertyName, value: unknown = null): T[keyof T] {
-      return _get(this._state, key, value);
+   _get(key: Path<T>, fallbackValue: any = null): T[keyof T] {
+      return _get(this._state, key, fallbackValue);
    }
 
    /**
@@ -185,7 +189,7 @@ export default class Collection<T = unknown> implements ICollection<T> {
     * @param value - Value to set for the property (if key is not an object/array).
     * @returns {Collection<T>} - The updated instance of Collection.
     */
-   _set(key: PropertyPath | keyof T | Partial<T> | T, value?: unknown): this {
+   _set(key: Path<T>, value?: unknown): this {
       if (_isObject(key) || _isArray(key)) {
          (this._state as T) = key as T;
       } else {
