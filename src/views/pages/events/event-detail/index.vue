@@ -14,17 +14,18 @@ const {
 } = await EventApi.get<Event>(props.id);
 const event = EventModel.create<Event>(data);
 </script>
-<template>
-   <div class="flex flex-col gap-4">
-      <h1 class="text-3xl" v-text="event?.title" />
 
-      <div class="flex gap-8 flex-col">
-         <div class="flex gap-4 items-center text-sm">
-            <div class="flex gap-2 items-center">
+<template>
+   <div class="event-detail__container">
+      <h1 class="event-detail__title" v-text="event?.title" />
+
+      <div class="event-detail__info-group">
+         <div class="event-detail__info-item">
+            <div class="event-detail__info-item-content">
                <i :class="PrimeIcons.CALENDAR" />
                <p v-text="event.event_date" />
             </div>
-            <div class="flex gap-2 items-center">
+            <div class="event-detail__info-item-content">
                <i :class="PrimeIcons.MAP_MARKER" />
                <p v-text="event.venue.name" />
             </div>
@@ -32,10 +33,10 @@ const event = EventModel.create<Event>(data);
          <Image
             preview
             :src="event.image_url"
-            :image-class="'w-full'"
-            class="max-w-[50%] self-center rounded-lg overflow-hidden"
+            :image-class="'event-detail__image--fluid'"
+            class="event-detail__image"
          />
-         <Tabs class="self-start" :value="tab">
+         <Tabs class="event-detail__tabs" :value="tab">
             <TabList>
                <Tab
                   value="#description"
@@ -54,17 +55,20 @@ const event = EventModel.create<Event>(data);
                />
             </TabList>
          </Tabs>
-         <div class="flex gap-2 flex-col" id="description">
-            <h2 class="text-xl" v-text="$t('events.event_detail.about_the_event')" />
+         <div class="event-detail__tab-content" id="description">
+            <h2
+               class="event-detail__tab-header"
+               v-text="$t('events.event_detail.about_the_event')"
+            />
             <p v-text="event.description" />
          </div>
-         <div class="flex gap-2 flex-col" id="address">
-            <h2 class="text-xl" v-text="$t('events.event_detail.address')" />
+         <div class="event-detail__tab-content" id="address">
+            <h2 class="event-detail__tab-header" v-text="$t('events.event_detail.address')" />
             <p v-text="event.venue.address" />
          </div>
-         <div class="flex gap-2" id="event_categories">
+         <div class="event-detail__tab-content" id="event_categories">
             <FormField
-               class="!px-0"
+               class="event-detail__form-field"
                fluid
                :label="$t('events.event_detail.select_event_category')"
                v-slot="slopProps"
@@ -81,4 +85,55 @@ const event = EventModel.create<Event>(data);
       </div>
    </div>
 </template>
-<style lang="scss"></style>
+
+<style lang="scss" scoped>
+.event-detail {
+   &__container {
+      @apply flex flex-col gap-4;
+   }
+
+   &__title {
+      @apply text-3xl;
+   }
+
+   &__info {
+      &-group {
+         @apply flex flex-col gap-8;
+      }
+
+      &-item {
+         @apply flex gap-4 items-center text-sm;
+      }
+
+      &-item-content {
+         @apply flex gap-2 items-center;
+      }
+   }
+
+   &__image {
+      @apply max-w-[50%] self-center rounded-lg overflow-hidden;
+
+      &--fluid {
+         @apply w-full;
+      }
+   }
+
+   &__tabs {
+      @apply self-start;
+   }
+
+   &__tab {
+      &-content {
+         @apply flex gap-2 flex-col;
+      }
+
+      &-header {
+         @apply text-xl;
+      }
+   }
+
+   &__form-field {
+      @apply px-0 w-fit;
+   }
+}
+</style>
