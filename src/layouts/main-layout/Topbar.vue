@@ -50,8 +50,8 @@ const navLinksMenu = ref();
 
 <template>
    <nav class="layout-topbar">
-      <div class="layout-topbar-toplinks">
-         <div class="max-w-[996px] flex gap-2 justify-between items-center mx-auto">
+      <div class="layout-topbar__toplinks">
+         <div class="layout-topbar__container">
             <FormField>
                <Select
                   size="small"
@@ -65,7 +65,7 @@ const navLinksMenu = ref();
             </FormField>
 
             <Button
-               class="lg:!hidden ms-auto !bg-slate-800 !border-slate-700"
+               class="layout-topbar__menu-button"
                type="button"
                icon="pi pi-ellipsis-v"
                @click="(e) => topLinksMenu.toggle(e)"
@@ -73,7 +73,7 @@ const navLinksMenu = ref();
                aria-controls="overlay_menu"
             />
             <Menu ref="topLinksMenu" id="overlay_menu" :model="topLinks" :popup="true" />
-            <ul class="hidden lg:flex gap-4 items-center">
+            <ul class="layout-topbar__toplinks-list">
                <RouterLink
                   custom
                   to="#"
@@ -82,7 +82,7 @@ const navLinksMenu = ref();
                   :key="'' + link.label + i"
                >
                   <a :href>
-                     <li class="flex gap-1 items-center" @click="navigate">
+                     <li class="layout-topbar__toplink-item" @click="navigate">
                         <i v-if="link.icon" :class="link.icon" />
                         <span v-if="link.label" v-text="link.label" />
                      </li>
@@ -91,25 +91,24 @@ const navLinksMenu = ref();
             </ul>
          </div>
       </div>
-      <div class="layout-topbar-nav">
-         <div class="max-w-[996px] flex flex-wrap gap-4 items-center mx-auto">
-            <div class="layout-topbar-logo-container">
-               <router-link to="/" class="layout-topbar-logo">
+      <div class="layout-topbar__nav">
+         <div class="layout-topbar__container">
+            <div class="layout-topbar__logo-container">
+               <router-link to="/" class="layout-topbar__logo">
                   <span v-text="`Ticketlig`" />
                </router-link>
+               <Button
+                  class="layout-topbar__menu-button"
+                  type="button"
+                  severity="primary"
+                  icon="pi pi-ellipsis-v"
+                  @click="(e) => navLinksMenu.toggle(e)"
+                  aria-haspopup="true"
+                  aria-controls="overlay_menu"
+               />
             </div>
-
-            <Button
-               class="lg:!hidden"
-               type="button"
-               severity="primary"
-               icon="pi pi-ellipsis-v"
-               @click="(e) => navLinksMenu.toggle(e)"
-               aria-haspopup="true"
-               aria-controls="overlay_menu"
-            />
             <Menu ref="navLinksMenu" id="overlay_menu" :model="navLinks" :popup="true" />
-            <ul class="hidden lg:flex min-h-[75px] !h-full">
+            <ul class="layout-topbar__nav-links">
                <RouterLink
                   custom
                   to="#"
@@ -117,20 +116,17 @@ const navLinksMenu = ref();
                   v-for="(link, i) in navLinks"
                   :key="'' + link.label + i"
                >
-                  <a :href class="!min-h-full">
-                     <li
-                        class="flex gap-1 !h-full items-center p-2 hover:bg-slate-900/25"
-                        @click="navigate"
-                     >
+                  <a :href class="layout-topbar__nav-link">
+                     <li class="layout-topbar__nav-link-item" @click="navigate">
                         <i v-if="link.icon" :class="link.icon" />
                         <span v-if="link.label" v-text="link.label" />
                      </li>
                   </a>
                </RouterLink>
             </ul>
-            <InputGroup class="m-2 ms-auto flex-1 min-w-fit max-w-md">
+            <InputGroup class="layout-topbar__search">
                <InputText
-                  class="w-full"
+                  class="layout-topbar__search-input"
                   :placeholder="$t('layout.header.search_activity_venue_or_actors.placeholder')"
                />
                <InputGroupAddon><Button :icon="PrimeIcons.SEARCH" /></InputGroupAddon>
@@ -144,20 +140,56 @@ const navLinksMenu = ref();
    @apply bg-[linear-gradient(90deg,rgb(1,80,167),rgb(2,108,223),rgb(1,80,167))];
    @apply w-full self-start z-[999] text-white;
 
-   &-toplinks {
+   &__toplinks {
       @apply bg-black p-2 px-8;
    }
 
-   &-nav {
+   &__nav {
       @apply min-h-[50px] px-8;
    }
 
-   &-logo {
-      @apply font-[500] italic text-white text-3xl;
+   &__container {
+      @apply max-w-[996px] flex flex-wrap gap-2 justify-between items-center mx-auto;
+   }
 
-      &-container {
-         @apply p-4 flex items-center;
-      }
+   &__logo-container {
+      @apply p-4 flex gap-4 items-center;
+   }
+
+   &__logo {
+      @apply font-[500] italic text-white text-3xl;
+   }
+
+   &__menu-button {
+      @apply lg:!hidden ms-auto !bg-slate-800 !border-slate-700;
+   }
+
+   &__toplinks-list {
+      @apply hidden lg:flex gap-4 items-center;
+   }
+
+   &__toplink-item {
+      @apply flex gap-1 items-center;
+   }
+
+   &__nav-links {
+      @apply hidden lg:flex min-h-[75px] !h-full;
+   }
+
+   &__nav-link {
+      @apply min-h-full;
+   }
+
+   &__nav-link-item {
+      @apply flex gap-1 !h-full items-center p-2 hover:bg-slate-900/25;
+   }
+
+   &__search {
+      @apply m-2 ms-auto flex-1 min-w-fit max-w-md;
+   }
+
+   &__search-input {
+      @apply w-full m-2 ms-auto;
    }
 }
 </style>
