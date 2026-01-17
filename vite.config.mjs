@@ -10,6 +10,7 @@ import packageVersion from 'vite-plugin-package-version';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+   base: 'ticketlig', //for github pages
    build: {
       target: 'esnext',
       modulePreload: true,
