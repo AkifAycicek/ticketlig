@@ -1,4 +1,5 @@
 import { BaseModel } from './BaseModel';
+import { Seat } from './SeatModel';
 
 export interface EventVenue {
    id: number;
@@ -20,6 +21,19 @@ export interface Event {
    event_date: string;
    venue: EventVenue;
    event_categories: EventCategory[];
+}
+
+export interface EventPaymentPayload {
+   eventId: Event['id'];
+   eventCategoryId: EventCategory['id'];
+   seats: Seat['id'][];
+   customer_name: string;
+   customer_surname: string;
+   customer_email: string;
+   cc_number: string;
+   cc_exp_month: number;
+   cc_exp_year: number;
+   cc_exp_cvv: number;
 }
 
 type Constructor<T> = {
