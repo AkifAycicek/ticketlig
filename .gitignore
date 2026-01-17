@@ -3,7 +3,7 @@ coverage
 *.log*
 .cache
 .output
-dist
+# dist
 .DS_Store
 .idea
 .eslintcache
