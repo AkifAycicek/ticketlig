@@ -8,7 +8,13 @@ watch(
    async (hash) => {
       try {
          if (_isEmpty(hash)) return;
-         setTimeout(() => document.querySelector(route.hash)?.scrollIntoView(), 1000);
+         setTimeout(
+            () =>
+               document.querySelector(route.hash)?.scrollIntoView({
+                  block: 'center'
+               }),
+            1000
+         );
       } catch (error) {
          console.warn(error);
       }
@@ -21,7 +27,13 @@ watch(
    (hash) => {
       try {
          if (_isEmpty(hash)) return;
-         setTimeout(() => document.querySelector(route.hash)?.scrollIntoView(), 200);
+         setTimeout(
+            () =>
+               document.querySelector(route.hash)?.scrollIntoView({
+                  block: 'center'
+               }),
+            200
+         );
       } catch (error) {
          console.warn(error);
       }
@@ -69,7 +81,7 @@ watch(
    </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .layout {
    &__wrapper {
       @apply min-w-[inherit] min-h-[inherit] overflow-auto flex flex-col gap-4;
@@ -82,7 +94,7 @@ watch(
 
 .content {
    &__body {
-      @apply max-w-[996px] bg-white flex-1 w-full flex flex-col mx-auto p-8;
+      @apply max-w-[996px] min-h-[80vh] bg-white flex-1 w-full flex flex-col mx-auto p-8;
    }
 
    &__header {

@@ -138,7 +138,7 @@ const navLinksMenu = ref();
 <style lang="scss">
 .layout-topbar {
    @apply bg-[linear-gradient(90deg,rgb(1,80,167),rgb(2,108,223),rgb(1,80,167))];
-   @apply w-full self-start z-[999] text-white;
+   @apply w-full self-start z-[999] text-white shadow-xl;
 
    &__toplinks {
       @apply bg-black p-2 px-8;
