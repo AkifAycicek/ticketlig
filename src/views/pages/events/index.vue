@@ -12,13 +12,12 @@ const events = BaseResponse.create<Event[]>()._merge(response)._map(EventModel);
       <h1 class="page__title">
          <span v-text="$t($route.meta.label as string)" />
       </h1>
-
       <div class="event-list">
          <RouterLink
             custom
-            v-for="(event, key) in _values(events)"
+            v-for="event in events._data"
             :key="event.id"
-            :to="{ name: 'event-detail', params: { id: event.id } }"
+            :to="{ name: 'event-detail', params: { eventId: event.id } }"
             v-slot="{ href, navigate }"
          >
             <a :href @click.prevent="() => navigate()" class="event-card">
