@@ -12,6 +12,7 @@ import KeyFilter from 'primevue/keyfilter';
 import Ripple from 'primevue/ripple';
 import Tooltip from 'primevue/tooltip';
 import router from './router';
+import { vuexStore } from './store';
 
 const g = globalThis as any;
 
@@ -35,6 +36,8 @@ if (!g.__VUE_APP__) {
    });
 
    app.use(ToastService);
+   app.use(vuexStore);
+
    app.directive('keyfilter', KeyFilter);
    app.directive('focustrap', FocusTrap);
    app.directive('ripple', Ripple);

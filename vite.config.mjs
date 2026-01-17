@@ -46,6 +46,7 @@ export default defineConfig({
             'vue-router',
             '@vueuse/core',
             'vue-i18n',
+            'vuex',
             {
                from: '@primevue/core/api',
                imports: ['PrimeIcons', 'ToastSeverity']
@@ -86,14 +87,6 @@ export default defineConfig({
       }
    },
    optimizeDeps: {
-      include: [
-         'vue',
-         'vue-router',
-         '@vueuse/core',
-         'pinia',
-         '@primevue/core/api',
-         '@plugins/mitt',
-         'lodash'
-      ]
+      include: ['vue', 'vue-router', '@vueuse/core', 'pinia', '@primevue/core/api', 'lodash']
    }
 });
