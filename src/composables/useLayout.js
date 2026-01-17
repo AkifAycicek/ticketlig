@@ -27,11 +27,11 @@ const layoutStorage = useLocalStorage(
       isLinked: true,
       sidebarActive: false,
       activeMenuItem: {},
-      preset: 'nora',
+      preset: 'aura',
       primary: 'blue',
       surface: 'zinc',
       dark: {
-         preset: 'nora',
+         preset: 'aura',
          primary: 'blue',
          surface: 'zinc'
       }

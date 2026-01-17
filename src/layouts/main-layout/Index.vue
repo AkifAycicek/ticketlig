@@ -82,7 +82,7 @@ watch(
 
 .content {
    &__body {
-      @apply max-w-[996px] flex-1 w-full flex flex-col mx-auto p-8;
+      @apply max-w-[996px] bg-white flex-1 w-full flex flex-col mx-auto p-8;
    }
 
    &__header {
