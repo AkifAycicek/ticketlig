@@ -1,0 +1,163 @@
+{
+   "events": {
+      "event_seat": {
+         "seat": "Seat",
+         "empty": "Empty",
+         "sold_out/not_avaliable": "Sold Out / Not Available"
+      },
+      "event": {
+         "tabs": {
+            "details": "Details",
+            "event_categories": "Event Categories",
+            "seat_plan": "Seat Plan"
+         },
+         "checkout": {
+            "section": {
+               "customer": "Customer",
+               "credit_card": "Credit Card"
+            },
+            "credit_card_hint": {
+               "you_can_try_4111_1111_1111_1111": "You can try 4111 1111 1111 1111"
+            },
+            "submit": {
+               "tooltip": {
+                  "the_last_exit_before_the_bridge!": "The last exit before the bridge!"
+               }
+            }
+         },
+         "about_the_event": "About the Event",
+         "address": "Address",
+         "select_event_category": "Select Event Category",
+         "go_to_checkout": "Go to Checkout"
+      }
+   },
+   "action": {
+      "reset": "Reset",
+      "save": "Save"
+   },
+   "layout": {
+      "footer": {
+         "help": {
+            "title": "Help",
+            "faq": "FAQ",
+            "sales_channels": "Sales Channels",
+            "gift_card": "Gift Card",
+            "insurance": "Insurance",
+            "account": "Account"
+         },
+         "about": {
+            "title": "About",
+            "who_we_are": "Who We Are",
+            "policy": "Policy",
+            "media": "Media",
+            "contact": "Contact",
+            "live_nation": "Live Nation",
+            "ticket_story": "Ticket Story",
+            "information_society": "Information Society"
+         },
+         "work": {
+            "title": "Work",
+            "your_tickets": "Your Tickets",
+            "advertise": "Advertise",
+            "career": "Career",
+            "affiliate": "Affiliate"
+         },
+         "follow": {
+            "title": "Follow"
+         },
+         "apps": {
+            "title": "Apps"
+         },
+         "policies": {
+            "title": "Policies",
+            "contracts": "Contracts",
+            "cookies": "Cookies",
+            "preferences": "Preferences",
+            "ttk": "TTK",
+            "privacy": "Privacy"
+         }
+      },
+      "header": {
+         "toplinks": {
+            "gift_card": "Gift Card",
+            "monthly_magazine": "Monthly Magazine",
+            "blog": "Blog",
+            "help": "Help"
+         },
+         "navlinks": {
+            "football": "Football",
+            "music": "Music",
+            "scene": "Scene",
+            "sport": "Sport",
+            "family": "Family",
+            "education": "Education"
+         },
+         "search_activity_venue_or_actors": {
+            "placeholder": "Search activity, venue or actors"
+         }
+      },
+      "topbar": {
+         "select_language": "Select Language"
+      }
+   },
+   "flayout": {
+      "ooter": {
+         "rights": "Rights"
+      }
+   },
+   "app_config": {
+      "language": {
+         "option": {
+            "turkish": "Turkish",
+            "english": "English"
+         }
+      }
+   },
+   "fields": {
+      "": "Field",
+      "customer_name": "Customer Name",
+      "customer_surname": "Customer Surname",
+      "customer_email": "Customer Email",
+      "cc_number": "Credit Card Number",
+      "cc_exp_cvv": "Credit Card Expiry & CVV",
+      "seats": "Seats",
+      "cc_exp_year": "Expiry Year",
+      "cc_exp_month": "Expiry Month"
+   },
+   "route": {
+      "label": {
+         "error": "Error",
+         "notfound": "Not Found",
+         "events": "Events",
+         "event_detail": "Event Detail",
+         "seat_plan": "Seat Plan",
+         "checkout": "Checkout"
+      }
+   },
+   "router": {
+      "error_occured": "An Error Occurred",
+      "requested_resource_is_not_available": "Requested Resource Is Not Available",
+      "action": {
+         "go_back": "Go Back",
+         "go_to_home": "Go To Home"
+      },
+      "not_found": "Not Found"
+   },
+   "address": {
+      "event": {
+         "tabs": {
+            "address": "Address"
+         }
+      }
+   },
+   "toast": {
+      "success": "Success",
+      "ticket_buyed_successfully": "Ticket Bought Successfully"
+   },
+   "form": {
+      "action": {
+         "reset": "Reset",
+         "submit": "Submit"
+      }
+   }
+}

@@ -1,36 +1,82 @@
 {
-  "fields": {
-    "": ""
+  "events": {
+    "event_seat": {
+      "seat": "",
+      "empty": "",
+      "sold_out/not_avaliable": ""
+    },
+    "event": {
+      "tabs": {
+        "details": "",
+        "event_categories": "",
+        "seat_plan": ""
+      },
+      "checkout": {
+        "section": {
+          "customer": "",
+          "credit_card": ""
+        },
+        "credit_card_hint": {
+          "you_can_try_4111_1111_1111_1111": ""
+        },
+        "submit": {
+          "tooltip": {
+            "the_last_exit_before_the_bridge!": ""
+          }
+        }
+      },
+      "about_the_event": "",
+      "address": "",
+      "select_event_category": "",
+      "go_to_checkout": ""
+    }
   },
   "action": {
     "reset": "",
     "save": ""
   },
-  "app_config": {
-    "language": {
-      "option": {
-        "turkish": "",
-        "english": ""
-      }
-    }
-  },
-  "route": {
-    "label": {
-      "error": "",
-      "notfound": "",
-      "events": ""
-    }
-  },
-  "router": {
-    "error_occured": "",
-    "requested_resource_is_not_available": "",
-    "action": {
-      "go_back": "",
-      "go_to_home": ""
-    },
-    "not_found": ""
-  },
   "layout": {
+    "footer": {
+      "help": {
+        "title": "",
+        "faq": "",
+        "sales_channels": "",
+        "gift_card": "",
+        "insurance": "",
+        "account": ""
+      },
+      "about": {
+        "title": "",
+        "who_we_are": "",
+        "policy": "",
+        "media": "",
+        "contact": "",
+        "live_nation": "",
+        "ticket_story": "",
+        "information_society": ""
+      },
+      "work": {
+        "title": "",
+        "your_tickets": "",
+        "advertise": "",
+        "career": "",
+        "affiliate": ""
+      },
+      "follow": {
+        "title": ""
+      },
+      "apps": {
+        "title": ""
+      },
+      "policies": {
+        "title": "",
+        "contracts": "",
+        "cookies": "",
+        "preferences": "",
+        "ttk": "",
+        "privacy": ""
+      }
+    },
     "header": {
       "toplinks": {
         "gift_card": "",
@@ -49,6 +95,67 @@
       "search_activity_venue_or_actors": {
         "placeholder": ""
       }
+    },
+    "topbar": {
+      "select_language": ""
+    }
+  },
+  "flayout": {
+    "ooter": {
+      "rights": ""
+    }
+  },
+  "app_config": {
+    "language": {
+      "option": {
+        "turkish": "",
+        "english": ""
+      }
+    }
+  },
+  "fields": {
+    "": "",
+    "customer_name": "",
+    "customer_surname": "",
+    "customer_email": "",
+    "cc_number": "",
+    "cc_exp_cvv": "",
+    "seats": ""
+  },
+  "route": {
+    "label": {
+      "error": "",
+      "notfound": "",
+      "events": "",
+      "event_detail": "",
+      "seat_plan": "",
+      "checkout": ""
+    }
+  },
+  "router": {
+    "error_occured": "",
+    "requested_resource_is_not_available": "",
+    "action": {
+      "go_back": "",
+      "go_to_home": ""
+    },
+    "not_found": ""
+  },
+  "address": {
+    "event": {
+      "tabs": {
+        "address": ""
+      }
+    }
+  },
+  "toast": {
+    "success": "",
+    "ticket_buyed_successfully": ""
+  },
+  "form": {
+    "action": {
+      "reset": "",
+      "submit": ""
     }
   }
 }
