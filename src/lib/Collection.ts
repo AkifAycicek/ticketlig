@@ -1,17 +1,8 @@
-import { PropertyPath } from 'lodash';
 import { Ref } from 'vue';
 
-type Constructor<T> = {
+export type CollectionCtor<T> = {
    new <M = T>(...args: ConstructorParameters<typeof Collection<M>>): Collection<M>;
 };
-
-type Primitive = string | number | boolean | bigint | symbol | null | undefined;
-
-export type Path<T> = T extends Primitive
-   ? never
-   : {
-        [K in keyof T & string]: T[K] extends Primitive ? K : K | `${K}.${Path<T[K]>}`;
-     }[keyof T & string];
 
 // Define the interface for Collection
 export interface ICollection<T = unknown> {
@@ -73,7 +64,7 @@ export default class Collection<T = unknown> implements ICollection<T> {
    /**
     * Default state of the collection.
     */
-   protected _defaults: Partial<T> = ref<Partial<T>>({} as Partial<T>) as Partial<T>;
+   _defaults: Partial<T> = ref<Partial<T>>({} as Partial<T>) as Partial<T>;
 
    /**
     * Constructor to initialize the state with provided data.
@@ -144,7 +135,7 @@ export default class Collection<T = unknown> implements ICollection<T> {
    }
 
    static create<T = unknown>(
-      this: Constructor<T>,
+      this: CollectionCtor<T>,
       ...args: ConstructorParameters<typeof Collection<T>>
    ) {
       const instance = new this<T>(...args);
@@ -189,11 +180,11 @@ export default class Collection<T = unknown> implements ICollection<T> {
     * @param value - Value to set for the property (if key is not an object/array).
     * @returns {Collection<T>} - The updated instance of Collection.
     */
-   _set(key: Path<T>, value?: unknown): this {
+   _set(key: Path<T> | object, value?: unknown): this {
       if (_isObject(key) || _isArray(key)) {
          (this._state as T) = key as T;
       } else {
-         _set(this._state as object, key as PropertyPath, value);
+         _set(this._state as object, key, value);
       }
       return this;
    }
@@ -230,6 +221,6 @@ export default class Collection<T = unknown> implements ICollection<T> {
     * @returns {string} - String representation of the state in JSON format.
     */
    get _toJson(): string {
-      return JSON.stringify(unref(this._data) || '');
+      return JSON.stringify(unref(this._data) || '', undefined, 2);
    }
 }
