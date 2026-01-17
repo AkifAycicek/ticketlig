@@ -25,6 +25,8 @@ const boxElement = ref<HTMLElement | null>(null);
          @submit.prevent
          ref="boxElement"
          autocomplete="on"
+         @reset="() => form?._reset()"
+         v-bind="$attrs"
       >
          <BlockUI
             :blocked="readonly === true"
@@ -50,13 +52,7 @@ const boxElement = ref<HTMLElement | null>(null);
                      <Button
                         :label="submitText || $t('action.save')"
                         class="form_box__button"
-                        :disabled="!form?._isChanged"
                         type="submit"
-                     />
-                     <PrintElementButton
-                        v-if="printable"
-                        :element="boxElement"
-                        class="form_box__print-button"
                      />
                   </span>
                </div>
@@ -86,11 +82,6 @@ const boxElement = ref<HTMLElement | null>(null);
                      <slot name="actions" />
                   </div>
                   <div class="form_box__header-actions">
-                     <PrintElementButton
-                        v-if="printable"
-                        :element="boxElement"
-                        class="form_box__print-button"
-                     />
                      <ErrorBadge v-if="error" :error="error" class="form_box__error-badge" />
                   </div>
                </div>
