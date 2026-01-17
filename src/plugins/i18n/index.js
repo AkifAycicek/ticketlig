@@ -4,14 +4,6 @@ import Validator from 'validatorjs';
 import { computed, nextTick, watch } from 'vue';
 import { createI18n } from 'vue-i18n';
 
-import en from 'validatorjs/src/lang/en.js';
-import tr from 'validatorjs/src/lang/tr.js';
-
-export const validatorLocales = {
-   en,
-   tr
-};
-
 export const dayjsLocales = {
    en: () => import('dayjs/locale/en'),
    tr: () => import('dayjs/locale/tr')
@@ -31,7 +23,6 @@ export async function loadLocaleMessages(locale, i18n = i18NPlugin.global) {
 
       // Dynamically load package locales
       const loadDayjsLocale = dayjsLocales[locale];
-      const loadValidatorLocales = validatorLocales[locale];
       const loadPrimeLocales = primeLocales[locale];
 
       try {
@@ -47,19 +38,6 @@ export async function loadLocaleMessages(locale, i18n = i18NPlugin.global) {
       }
 
       try {
-         if (loadValidatorLocales) {
-            Validator.setMessages(locale, loadValidatorLocales);
-            Validator.useLang(locale);
-         } else {
-            console.warn(`validator locale '${locale}' not found, falling back to 'en'`);
-            Validator.setMessages(locale, await validatorLocales['en']?.());
-            Validator.useLang('en');
-         }
-      } catch (error) {
-         console.warn(`Failed to load validator locale '${locale}':`, error);
-      }
-
-      try {
          if (loadPrimeLocales) {
             const primevue = (await import('@/main'))?.app?.config?.globalProperties?.$primevue;
             const primeLocale = (await loadPrimeLocales())?.default;
@@ -69,6 +47,13 @@ export async function loadLocaleMessages(locale, i18n = i18NPlugin.global) {
          }
       } catch (error) {
          console.warn(`Failed to load primevue locale '${locale}':`, error);
+      }
+
+      try {
+         Validator.useLang(locale);
+      } catch (error) {
+         console.warn(`validator locale '${locale}' not found, falling back to 'en'`);
+         Validator.useLang('en');
       }
 
       return {
